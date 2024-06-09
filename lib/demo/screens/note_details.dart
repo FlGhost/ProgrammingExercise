@@ -1,23 +1,36 @@
+import 'dart:ffi';
 import 'package:flutter/material.dart';
 
 class NoteDetail extends StatefulWidget {
-  const NoteDetail({super.key});
+  final String appBarTitle;
+
+  const NoteDetail({super.key, required this.appBarTitle});
 
   @override
-  State<NoteDetail> createState() => _NoteDetailState();
+  State<NoteDetail> createState() => _NoteDetailState(appBarTitle);
 }
 
 class _NoteDetailState extends State<NoteDetail> {
+  String appBarTitle;
   static var priorities = ['High', 'Low'];
   TextEditingController titleController = TextEditingController();
   TextEditingController descController = TextEditingController();
+
+  //constructor
+  _NoteDetailState(this.appBarTitle);
 
   @override
   Widget build(BuildContext context) {
     TextStyle? textStyle = Theme.of(context).textTheme.titleMedium;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Note'),
+        title: Text(appBarTitle),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            moveToLastScreen();
+          },
+        ),
         backgroundColor: Colors.lightBlue,
       ),
       body: Padding(
@@ -82,6 +95,10 @@ class _NoteDetailState extends State<NoteDetail> {
                   //save btn
                   Expanded(
                     child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.blue),
+                      ),
                       child: const Text('Save'),
                       onPressed: () {
                         setState(() {
@@ -96,6 +113,10 @@ class _NoteDetailState extends State<NoteDetail> {
                   //delete btn
                   Expanded(
                     child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.blue),
+                      ),
                       child: const Text('Delete'),
                       onPressed: () {
                         setState(() {
@@ -111,5 +132,9 @@ class _NoteDetailState extends State<NoteDetail> {
         ),
       ),
     );
+  }
+
+  void moveToLastScreen() {
+    Navigator.pop(context);
   }
 }

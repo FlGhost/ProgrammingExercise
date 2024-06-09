@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:prog_ex_app/demo/screens/note_details.dart';
+import 'dart:ffi';
 
 class NoteList extends StatefulWidget {
   const NoteList({super.key});
@@ -19,7 +21,10 @@ class _NoteListState extends State<NoteList> {
       ),
       body: getNoteListView(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {debugPrint('Test button')},
+        onPressed: () => {
+          debugPrint('elevated btn pressed'),
+          navigateToDetail('Add Note'),
+        },
         tooltip: 'Add Note',
         child: const Icon(Icons.add),
       ),
@@ -45,10 +50,19 @@ class _NoteListState extends State<NoteList> {
               Icons.delete,
               color: Colors.grey,
             ),
-            onTap: () => {debugPrint('Hello this is test')},
+            onTap: () => {
+              debugPrint('Hello this is test'),
+              navigateToDetail('Edit Note'),
+            },
           ),
         );
       },
     );
+  }
+
+  void navigateToDetail(String title) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return NoteDetail(appBarTitle: title);
+    }));
   }
 }

@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Demo Page test',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.deepPurple),
-      home: const NoteDetail(),
+      home: const NoteList(),
     );
   }
 }
