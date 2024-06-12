@@ -2,7 +2,7 @@
 
 class Note {
   // underscore '_' means private
-  int _id = 0;
+  int? _id;
   String _title = '';
   String? _desc;
   String _date = '';
@@ -10,7 +10,7 @@ class Note {
 
   //standard constructor
   Note(
-      {required int id,
+      {int? id,
       required String title,
       String? desc,
       required int priority,
@@ -33,7 +33,7 @@ class Note {
 
   String get title => _title;
 
-  int get id => _id;
+  int? get id => _id;
 
   //setter
   //id cannot be changed
