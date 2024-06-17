@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prog_ex_app/demo/screens/note_details.dart';
 import 'package:prog_ex_app/demo/sqlite_test/utils/db_helper.dart';
-import 'dart:ffi';
 import 'dart:async';
 import 'package:sqflite/sqflite.dart';
 import '../sqlite_test/model/note.dart';
